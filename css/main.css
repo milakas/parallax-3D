@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --index: calc(1vw + 1vh);
+  --transition: 1.5s cubic-bezier(.05, .5, 0, 1)
+}
+
+@font-face {
+  font-family: kameril-3d;
+  src: url(../fonts/kamerik205-heavy.woff2);
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: merriweather-3d;
+  src: url(../fonts/merriweather-regular-italic.woff2);
+}
+
+body {
+  font-family: kameril-3d;
+  background-color: black;
+  color: white;
+}
+
+.logo {
+  --logo-size: calc(var(--index) * 5);
+
+  position: absolute;
+  top: calc(var(--index) * 2);
+  left: calc(50% - (var(--logo-size) / 2));
+  z-index: 1;
+
+  height: var(--logo-size);
+  width: var(--logo-size);
+  background-repeat: no-repeat;
+}
+
+.layers {
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+.layers__container {
+  height: 100vh;
+  min-height: 500px;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--move-y)) rotateY(var(--move-x));
+  will-change: tranform;
+  transition: transform var(--transition);
+}
+
+.layers__item {
+  position: absolute;
+  inset: -8vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-size: cover;
+  background-position: center;
+}
+
+.layer-1 {
+  transform: translateZ(-60px) scale(1.06);
+}
+
+.layer-2 {
+  transform: translateZ(80px) scale(.88);
+}
+
+.layer-3 {
+  transform: translateZ(180px) scale(.9);
+
+}
+
+.layer-4 {
+  transform: translateZ(190px) scale(.9);
+}
+
+.layer-5 {
+  transform: translateZ(260px) scale(.9);
+}
+
+.layer-6 {
+  transform: translateZ(300px);
+}
+
+.layer-4,
+.layer-5,
+.layer-6 {
+  pointer-events: none;
+
+}
+
+.hero-content {
+  margin-top: calc(var(--index) * 5);
+  font-size: calc(var(--index) * 1.7);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: calc(var(--index) * -.1);
+  line-height: 1.35em;
+}
+
+.hero-content span {
+  display: block;
+}
+
+.hero-content__p {
+  font-family: merriweather-3d;
+  font-size: calc(var(--index) * .65);
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 3;
+}
+
+.button-start {
+  padding: calc(var(--index) * .5) calc(var(--index) * 1.2);
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: calc(var(--index) * .7);
+  letter-spacing: -.02vw;
+
+  border-radius: 10em;
+  border: 2px solid rgb(255 255 255 / .4);
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+
+  transition: background-color .3s ease, .2s transform ease;
+}
+
+.button-start:hover {
+  background-color: rgb(255 255 255 / .3);
+}
+
+.button-start:active {
+  transform: scale(.9);
+}
